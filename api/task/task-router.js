@@ -1,11 +1,20 @@
 const express = require('express')
 const Task = require('./task-model')
+const { checkTask } = require('./task-middleware')
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
     Task.getTasks()
         .then(tasks => {
             res.json(tasks)
+        })
+        .catch(next)
+})
+
+router.post('/', checkTask, (req, res, next) => {
+    Task.addTask()
+        .then((result) =>{ 
+            res.json(result + 'finished adding task')
         })
         .catch(next)
 })

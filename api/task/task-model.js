@@ -9,7 +9,13 @@ const getTasks = async () => {
     return fixedTasks;
 }
 
+const addTask =  () => {
+    return Promise.resolve('task added')
+    
+}
+
 
 module.exports = {
     getTasks,
+    addTask,
 }
