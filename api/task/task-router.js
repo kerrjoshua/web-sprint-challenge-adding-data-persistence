@@ -12,9 +12,9 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', checkTask, (req, res, next) => {
-    Task.addTask()
-        .then((result) =>{ 
-            res.json(result + 'finished adding task')
+    Task.addTask(req.body)
+        .then((addedTask) =>{ 
+            res.status(201).json(addedTask)
         })
         .catch(next)
 })
