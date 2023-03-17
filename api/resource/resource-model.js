@@ -11,7 +11,7 @@ const getResources = async () => {
 
 const getByName = async(name) => {
     try{
-        return await db('resources').where('resource_name', name)
+        return await db('resources').where('resource_name', name).first()
     }
     catch (err) { return err}
 }

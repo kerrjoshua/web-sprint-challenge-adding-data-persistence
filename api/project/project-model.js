@@ -2,7 +2,12 @@ const db = require('../../data/dbConfig')
 
 const getProjects = async () => {
     try {
-        return await db('projects')
+        const projects = await db('projects')
+        const fixedProjects = projects.map(proj => {
+            proj.project_completed = !!proj.project_completed
+            return proj
+        })
+        return fixedProjects
     }
     catch (err) {
         return err
