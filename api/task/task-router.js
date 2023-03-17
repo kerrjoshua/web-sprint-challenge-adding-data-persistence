@@ -1,8 +1,13 @@
 const express = require('express')
+const Task = require('./task-model')
 const router = express.Router()
 
-router.use('*', (req, res) => {
-    res.json('Hello from tasks router')
+router.get('/', (req, res, next) => {
+    Task.getTasks()
+        .then(tasks => {
+            res.json(tasks)
+        })
+        .catch(next)
 })
 
 router.use('*', (err, req, res, next) => {//eslint-disable-line
