@@ -5,7 +5,7 @@ router.use('*', (req, res) => {
     res.json('Hello from tasks router')
 })
 
-router.use('*', (err, req, res, next) => {
+router.use('*', (err, req, res, next) => {//eslint-disable-line
     res.status(err.status || 500).json({
         customMessage: 'Problem in task router',
         message: err.message,
