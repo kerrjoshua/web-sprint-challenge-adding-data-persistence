@@ -8,7 +8,8 @@ router.use('*', (req, res) => {
 router.use('*', (err, req, res, next) => { //eslint-disable-line
     res.status(err.statuss || 500).json({
         customMessage: "Problem in projects router",
-        message: err.message
+        message: err.message,
+        stack: err.stack
     })
 })
 
