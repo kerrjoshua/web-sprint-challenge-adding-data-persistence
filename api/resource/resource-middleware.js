@@ -1,4 +1,4 @@
-const Resource =  require('./resource-model')
+const Resource = require('./resource-model')
 
 const checkResource = (req, res, next) => {
     const name = req.body.resource_name
@@ -22,7 +22,7 @@ const resourceNameUnique = (req, res, next) => {
                 next()
             } else {
                 next({
-                    status:400,
+                    status: 400,
                     message: `There is already a resource with the name ${req.body.resource_name}`
                 })
             }
