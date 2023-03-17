@@ -17,7 +17,8 @@ const getProjects = async () => {
 const getById = async(id) => {
     try{
         const project = await db('projects').where('project_id', id).first()
-        project.project_completed = !!project.project_completed;
+        if (project) {
+            project.project_completed = !!project.project_completed;}
         return project
     }
     catch (err) { return err}
