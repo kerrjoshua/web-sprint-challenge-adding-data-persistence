@@ -9,6 +9,13 @@ const getResources = async () => {
     }
 }
 
+const getByName = async(name) => {
+    try{
+        return await db('resources').where('resource_name', name)
+    }
+    catch (err) { return err}
+}
+
 const getById = async(id) => {
     try{
         return await db('resources').where('resource_id', id)
@@ -28,6 +35,7 @@ const addResource = async (resource) => {
 
 module.exports = {
     getResources,
-    addResource
+    addResource,
+    getByName
 
 }

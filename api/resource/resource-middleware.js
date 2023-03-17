@@ -1,3 +1,5 @@
+const Resource =  require('./resource-model')
+
 const checkResource = (req, res, next) => {
     const name = req.body.resource_name
     if (!name ||
@@ -14,8 +16,18 @@ const checkResource = (req, res, next) => {
 }
 
 const resourceNameUnique = (req, res, next) => {
-    console.log('resourceNameUnique')
-    next()
+    Resource.getByName(req.body.resource_name)
+        .then(exists => {
+            if (!exists) {
+                next()
+            } else {
+                next({
+                    status:400,
+                    message: `There is already a resource with the name ${req.body.resource_name}`
+                })
+            }
+        })
+        .catch(next)
 }
 
 module.exports = {
