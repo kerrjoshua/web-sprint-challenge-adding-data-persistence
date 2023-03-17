@@ -18,7 +18,7 @@ const getByName = async(name) => {
 
 const getById = async(id) => {
     try{
-        return await db('resources').where('resource_id', id)
+        return await db('resources').where('resource_id', id).first()
     }
     catch (err) { return err}
 }
