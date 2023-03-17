@@ -1,4 +1,5 @@
 const express = require('express')
+const Project = require('./project-middleware')
 
 const router = express.Router()
 
